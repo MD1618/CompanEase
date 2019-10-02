@@ -1,11 +1,10 @@
 // Body
-$body-bg: #f8fafc;
-
+$body-bg: linear-gradient(52deg, rgba(169, 194, 199, 1) 0%, rgba(212, 216, 221, 1) 100%);
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: 'Montserrat',
+sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-
 // Colors
 $blue: #3490dc;
 $indigo: #6574cd;
