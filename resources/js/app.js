@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./TweenMax.min.js');
 
 window.Vue = require('vue');
 
@@ -30,3 +31,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+/**
+ * custom animations
+ */
+window.onload = function() {
+
+    var welcome = document.getElementById("welcome");
+    var welcomeTitle = document.getElementById("welcomeTitle");
+    var timeline = new TimelineMax();
+    timeline.to(welcome, 2, { opacity: 1, y: -150 }, 0);
+    timeline.to(welcomeTitle, 2, { opacity: 1, y: -150 }, 0.5);
+
+}
