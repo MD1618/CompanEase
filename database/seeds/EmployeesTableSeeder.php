@@ -15,28 +15,28 @@ class EmployeesTableSeeder extends Seeder
         DB::table('employees')->insert([
             'first_name' => 'Garry',
             'last_name' => 'Beatie',
-            'company_id' => '1',
+            'company_id' => '2',
             'email' => 'garryb@gmail.com',
-            'phone' => '07777123123'
+            'phone' => '07777323323'
         ]);
         DB::table('employees')->insert([
             'first_name' => 'Martin',
             'last_name' => 'Drahony',
-            'company_id' => '1',
+            'company_id' => '4',
             'email' => 'md@gmail.com',
             'phone' => '07777987654'
         ]);
         DB::table('employees')->insert([
             'first_name' => 'Linda',
             'last_name' => 'Markette',
-            'company_id' => '1',
+            'company_id' => '3',
             'email' => 'lindam@gmail.com',
             'phone' => '07777456369'
         ]);
         DB::table('employees')->insert([
             'first_name' => 'Andy',
             'last_name' => 'Devil',
-            'company_id' => '1',
+            'company_id' => '5',
             'email' => 'andy@gmail.com',
             'phone' => '07777741852'
         ]);
