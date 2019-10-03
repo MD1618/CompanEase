@@ -30,4 +30,5 @@ Route::patch('/companies/update/{id}', 'CompaniesController@update')->name('comp
 
 Route::post('/companies/delete/{id}', 'CompaniesController@destroy')->name('companies.delete');
 
-
+//employees
+Route::get('/employees', 'EmployeesController@index')->name('employees');
