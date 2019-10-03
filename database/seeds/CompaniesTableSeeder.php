@@ -13,6 +13,12 @@ class CompaniesTableSeeder extends Seeder
     {
         //
         DB::table('companies')->insert([
+            'name' => 'Unemployed',
+            'email' => '',
+            'logo' => '',
+            'website' => ''
+        ]);
+        DB::table('companies')->insert([
             'name' => 'First Company',
             'email' => 'queries@firstcompany.com',
             'logo' => '',
