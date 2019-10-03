@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
 use App\Company;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class EmployeesController extends Controller
 {
@@ -49,20 +51,22 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        //dd($request);
         $data = request()->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'company_id' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'logo' => 'image',
-            'website' => 'url'
+            'phone' => 'string',
+            'image' => 'image',
         ]);
-
+            
 
         if (request('image')) {
             $imagePath = request('image')->store('employeePhotos', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(100, 100);
             $image->save();
-            $imageArray = ['logo' => $imagePath];
+            $imageArray = ['image' => $imagePath];
         }
 
 
@@ -71,9 +75,9 @@ class EmployeesController extends Controller
             $imageArray ?? []
         );
 
-        DB::table('companies')->insert($data);
+        DB::table('employees')->insert($data);
 
-        return redirect("/companies");
+        return redirect("/employees");
     }
 
     /**
