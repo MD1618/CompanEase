@@ -59,7 +59,7 @@ class CompaniesController extends Controller
 
 
         if (request('image')) {
-            $imagePath = request('image')->store('employeePhotos', 'public');
+            $imagePath = request('image')->store('companyLogos', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(100, 100);
             $image->save();
             $imageArray = ['logo' => $imagePath];
