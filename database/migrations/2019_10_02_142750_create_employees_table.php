@@ -17,9 +17,10 @@ class CreateEmployeesTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->unsignedBigInteger('companies_id');
+            $table->unsignedBigInteger('company_id');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->index('companies_id');
