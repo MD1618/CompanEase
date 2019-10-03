@@ -1,6 +1,6 @@
 body {
-    background: rgb(169, 194, 199);
-    background: linear-gradient(11deg, rgba(169, 194, 199, 1) 0%, rgba(212, 216, 221, 1) 100%);
+    background: rgb(197, 217, 221);
+    background: linear-gradient(11deg, rgb(191, 215, 219) 0%, rgb(226, 230, 235) 100%);
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -8,6 +8,8 @@ body {
 .listItem {
     opacity: 0;
     transform: translateX(-30px);
-    background: rgba(250, 250, 250, 0.3);
+    background: rgba(255, 255, 255, 0.5);
     border-radius: 7px;
+    margin: 0 5px;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.1);
 }
