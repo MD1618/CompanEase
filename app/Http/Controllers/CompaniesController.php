@@ -3,9 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Company;
+use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class CompaniesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +24,8 @@ class CompaniesController extends Controller
     public function index()
     {
         //
+        $companies = Company::paginate(2);
+        return view('companies.companiesList', compact('companies'));
     }
 
     /**
@@ -24,6 +36,7 @@ class CompaniesController extends Controller
     public function create()
     {
         //
+        return view('companies.createCompany');
     }
 
     /**
@@ -35,6 +48,32 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         //
+        //$this->authorize('update', $request->company);
+        //dd(request());
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'logo' => 'image',
+            'website' => 'url'
+        ]);
+
+
+        if (request('image')) {
+            $imagePath = request('image')->store('employeePhotos', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(100, 100);
+            $image->save();
+            $imageArray = ['logo' => $imagePath];
+        }
+
+
+        $data = array_merge(
+            $data,
+            $imageArray ?? []
+        );
+
+        DB::table('companies')->insert($data);
+
+        return redirect("/companies");
     }
 
     /**
