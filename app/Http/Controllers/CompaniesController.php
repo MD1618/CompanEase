@@ -24,7 +24,7 @@ class CompaniesController extends Controller
     public function index()
     {
         //
-        $companies = Company::where('name', '!=','Unemployed')->paginate(2);
+        $companies = Company::where('name', '!=','Unemployed')->paginate(10);
         return view('companies.companiesList', compact('companies'));
     }
 
