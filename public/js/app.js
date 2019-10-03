@@ -53006,7 +53006,7 @@ window.onload = function () {
   if (listItem) {
     TweenMax.staggerTo(listItem, 0.7, {
       opacity: 1,
-      x: '30px'
+      x: '0px'
     }, 0.2);
   }
 };

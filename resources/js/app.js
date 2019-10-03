@@ -49,7 +49,7 @@ window.onload = function() {
 
     var listItem = document.getElementsByClassName('listItem');
     if (listItem) {
-        TweenMax.staggerTo(listItem, 0.7, { opacity: 1, x: '30px' }, 0.2);
+        TweenMax.staggerTo(listItem, 0.7, { opacity: 1, x: '0px' }, 0.2);
     }
 
 }

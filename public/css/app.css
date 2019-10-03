@@ -10648,6 +10648,7 @@ body {
   background: #a9c2c7;
   background: linear-gradient(11deg, #a9c2c7 0%, #d4d8dd 100%);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .listItem {

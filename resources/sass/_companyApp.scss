@@ -2,6 +2,7 @@ body {
     background: rgb(169, 194, 199);
     background: linear-gradient(11deg, rgba(169, 194, 199, 1) 0%, rgba(212, 216, 221, 1) 100%);
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .listItem {
