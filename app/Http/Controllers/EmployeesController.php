@@ -3,9 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Employee;
+
 
 class EmployeesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +23,9 @@ class EmployeesController extends Controller
     public function index()
     {
         //
+        $employees = Employee::paginate(4);
+        
+        return view('employees.employeeslist',compact('employees'));
     }
 
     /**
