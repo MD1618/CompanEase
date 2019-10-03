@@ -22,4 +22,11 @@ class Company extends Model
     public function employees(){
         return $this->hasMany(Employee::class);
     }
+
+
+    public function logoImage()
+    {
+        $imagePath = ($this->logo) ? $this->logo : 'companyLogos/imageSoon.jpg';
+        return $imagePath;
+    }
 }
