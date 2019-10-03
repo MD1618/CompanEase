@@ -86,7 +86,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('companies')}}">
+                                <a class="dropdown-item" href="{{route('qualifications')}}">
                                     Qualifications List
                                 </a>
                                 <a class="dropdown-item" href="{{route('companies.create')}}">
