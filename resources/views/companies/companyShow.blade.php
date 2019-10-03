@@ -12,9 +12,6 @@
                 <h3><strong>{{ $company->name}}</strong></h3>
                 <h5><i class="fa fa-envelope"></i><a href="mailto:{{ $company->email}}"> {{ $company->email}}</a></h5>
                 <h5><a href="http://{{ $company->website}}">{{ $company->website}}</a></h5>
-                
-              
-                
 
             </div>
             <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="" style="color:#666;"><i class="fa fa-trash" ></i></a></div>
@@ -28,7 +25,11 @@
                 <img src="{{ asset('storage') . '/'.$employee->profileImage()  }}" alt="" class="" style="width:100px;">
             </div>
             <div>
-                <h3><strong>{{ $employee->first_name}} {{ $employee->last_name}}</strong></h3>
+                <h3>
+                <a href="{{route('employees.show', $employee->id)}}">
+                        <strong>{{ $employee->first_name}} {{ $employee->last_name}}</strong>
+                    </a>
+                </h3>
                 <h5><i class="fa fa-envelope"></i><a href="mailto: {{ $employee->email}}">  {{ $employee->email}}</a></h5>
                 <h5><i class="fa fa-phone"></i>  {{ $employee->phone}}</h5>
             </div>
