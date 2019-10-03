@@ -4,7 +4,7 @@
 <form action="{{ route('companies.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-10 col-sm-10 col-md-10 col-lg-6 col-xl-6 offset-1 offset-sm-1 offset-md-1 offset-lg-3 offset-xl-3">
 
                 <div class="row">
                     <h2>Add New Company</h2>
