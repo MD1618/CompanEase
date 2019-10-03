@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Employee;
-
+use App\Company;
 
 class EmployeesController extends Controller
 {
@@ -36,7 +36,8 @@ class EmployeesController extends Controller
     public function create()
     {
         //
-        return view('employees.createEmployee');
+        $companies = Company::all();
+        return view('employees.createEmployee',compact('companies'));
     }
 
     /**
@@ -48,6 +49,31 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request);
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'logo' => 'image',
+            'website' => 'url'
+        ]);
+
+
+        if (request('image')) {
+            $imagePath = request('image')->store('employeePhotos', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(100, 100);
+            $image->save();
+            $imageArray = ['logo' => $imagePath];
+        }
+
+
+        $data = array_merge(
+            $data,
+            $imageArray ?? []
+        );
+
+        DB::table('companies')->insert($data);
+
+        return redirect("/companies");
     }
 
     /**
