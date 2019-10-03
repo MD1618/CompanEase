@@ -74,7 +74,7 @@
                                 <a class="dropdown-item" href="{{route('employees')}}">
                                     Employees List
                                 </a>
-                                <a class="dropdown-item" href="{{route('companies.create')}}">
+                                <a class="dropdown-item" href="{{route('employees.create')}}">
                                     Add New Employee
                                 </a>
                             </div>
