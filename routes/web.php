@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //companies
 Route::get('/companies', 'CompaniesController@index')->name('companies');
+Route::get('/companies/{id}', 'CompaniesController@show')->name('companies.show');
 
 Route::get('/companies/create', 'CompaniesController@create')->name('companies.create');
 Route::post('/companies/store', 'CompaniesController@store')->name('companies.store');
