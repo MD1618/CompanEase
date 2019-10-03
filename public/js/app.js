@@ -52989,14 +52989,26 @@ window.onload = function () {
   var welcome = document.getElementById("welcome");
   var welcomeTitle = document.getElementById("welcomeTitle");
   var timeline = new TimelineMax();
-  timeline.to(welcome, 2, {
-    opacity: 1,
-    y: -150
-  }, 0);
-  timeline.to(welcomeTitle, 2, {
-    opacity: 1,
-    y: -150
-  }, 0.5);
+
+  if (welcome && welcomeTitle) {
+    timeline.to(welcome, 2, {
+      opacity: 1,
+      y: -150
+    }, 0);
+    timeline.to(welcomeTitle, 1.5, {
+      opacity: 1,
+      y: -150
+    }, 0.5);
+  }
+
+  var listItem = document.getElementsByClassName('listItem');
+
+  if (listItem) {
+    TweenMax.staggerTo(listItem, 0.7, {
+      opacity: 1,
+      x: '30px'
+    }, 0.2);
+  }
 };
 
 /***/ }),

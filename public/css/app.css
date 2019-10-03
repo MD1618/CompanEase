@@ -10650,3 +10650,8 @@ body {
   min-height: 100vh;
 }
 
+.listItem {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
