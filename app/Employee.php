@@ -25,7 +25,7 @@ class Employee extends Model
 
     public function profileImage()
     {
-        $imagePath = ($this->image) ? $this->image : '/storage/employeePhotos/avatarBlank.png';
+        $imagePath = ($this->image) ? $this->image : 'employeePhotos/avatarBlank.png';
         return $imagePath;
     }
 }
