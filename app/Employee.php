@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Qualification;
 
 class Employee extends Model
 {
@@ -27,5 +28,11 @@ class Employee extends Model
     {
         $imagePath = ($this->image) ? $this->image : 'employeePhotos/avatarBlank.png';
         return $imagePath;
+    }
+
+
+    public function qualified()
+    {
+        return $this->belongsToMany(Qualification::class)->withPivot('aquired', 'grade');
     }
 }
