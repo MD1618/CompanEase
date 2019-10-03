@@ -39,9 +39,9 @@
             </div>
 
             <div class="form-group row">
-                <label for="company" class="col-md-4 col-form-label ">{{ __('Company') }}</label>
+                <label for="company_id" class="col-md-4 col-form-label ">{{ __('Company') }}</label>
 
-                <select class="form-control" id="company" name="company" required>
+                <select class="form-control" id="company_id" name="company_id" required>
                     <option value="" selected disabled>Select Company</option>
                     @foreach ($companies as $company)
                     <option value="{{$company->id}}"> {{ $company->name}}</option>
