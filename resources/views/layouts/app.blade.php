@@ -40,7 +40,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" >
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -49,10 +49,10 @@
 
                         @else
 
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        <li class="nav-item dropdown" >
+                            <a id="navbarDropdown"  class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Companies <span class="caret"></span>
+                                Companies <i class="fa fa-angle-down"></i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -67,7 +67,7 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Employees <span class="caret"></span>
+                                Employees <i class="fa fa-angle-down"></i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -82,22 +82,25 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Qualifications <span class="caret"></span>
+                                Qualifications <i class="fa fa-angle-down"></i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('qualifications')}}">
                                     Qualifications List
                                 </a>
-                                <a class="dropdown-item" href="{{route('companies.create')}}">
+                                <a class="dropdown-item" href="{{route('qualifications.create')}}">
                                     Add New Qualification
                                 </a>
                             </div>
                         </li>
+                        <li style="width:40px;">
+                            
+                        </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            <a id="navbarDropdown" style="color:#999;" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <i class="fa fa-angle-down"></i>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
