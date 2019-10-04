@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Qualification;
 use Illuminate\Http\Request;
 
 class QualificationsController extends Controller
@@ -14,6 +15,8 @@ class QualificationsController extends Controller
     public function index()
     {
         //
+        $qualifications = Qualification::Paginate(10);
+        return view('qualifications.qualificationsIndex', compact('qualifications'));
     }
 
     /**
@@ -24,6 +27,7 @@ class QualificationsController extends Controller
     public function create()
     {
         //
+        return view('qualifications.qualificationCreate');
     }
 
     /**
@@ -46,6 +50,8 @@ class QualificationsController extends Controller
     public function show($id)
     {
         //
+        $qualification = Qualification::findOrfail($id);
+        return view('qualifications.qualificationShow' , compact('qualification'));
     }
 
     /**
