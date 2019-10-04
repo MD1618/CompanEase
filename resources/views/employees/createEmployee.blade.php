@@ -4,7 +4,8 @@
 <form action="{{ route('employees.store') }}" enctype="multipart/form-data" method="POST">
     @csrf
     <div class="row">
-        <div class="col-10 col-sm-10 col-md-10 col-lg-6 col-xl-6 offset-1 offset-sm-1 offset-md-1 offset-lg-3 offset-xl-3">
+        <div
+            class="col-10 col-sm-10 col-md-10 col-lg-6 col-xl-6 offset-1 offset-sm-1 offset-md-1 offset-lg-3 offset-xl-3">
 
             <div class="row">
                 <h2>Add New Employee</h2>
@@ -50,6 +51,7 @@
                 </select>
             </div>
 
+          
 
             <div class="form-group row">
                 <label for="email" class="col-md-4 col-form-label ">{{ __('Email') }}</label>
