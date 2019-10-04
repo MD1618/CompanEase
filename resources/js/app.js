@@ -20,7 +20,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('qualification-editor', require('./components/QualificationEditor.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,6 +31,33 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+/**
+ * 
+ * qualifications modal 
+ * 
+ */
+
+window.showQualificationsModal = function() {
+
+    var qualificationModal = document.getElementById('qualificationModal');
+    if (qualificationModal.classList.contains('hideModal')) {
+        qualificationModal.classList.remove('hideModal');
+    } else {
+        qualificationModal.classList.add('hideModal');
+    }
+}
+
+window.deleteQualification = function() {
+    var deleteModal = document.getElementById('deleteModal');
+    if (deleteModal.classList.contains('hideModal')) {
+        deleteModal.classList.remove('hideModal');
+    } else {
+        deleteModal.classList.add('hideModal');
+    }
+}
+
 
 
 /**
