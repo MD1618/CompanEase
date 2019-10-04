@@ -35,8 +35,16 @@ Route::get('/employees', 'EmployeesController@index')->name('employees');
 
 Route::get('/employees/create', 'EmployeesController@create')->name('employees.create');
 Route::post('/employees/store', 'EmployeesController@store')->name('employees.store');
+Route::post('/employees/qualify', 'EmployeesController@qualify')->name('employees.qualify');
 
 Route::get('/employees/{id}', 'EmployeesController@show')->name('employees.show');
 
 //Qualifications
 Route::get('/qualifications', 'QualificationsController@index')->name('qualifications');
+
+Route::get('/qualifications/create', 'QualificationsController@create')->name('qualifications.create');
+Route::post('/qualifications/store', 'QualificationsController@store')->name('qualifications.store');
+
+
+
+Route::get('/qualifications/{id}', 'QualificationsController@show')->name('qualifications.show');
