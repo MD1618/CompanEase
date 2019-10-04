@@ -44,7 +44,7 @@
     <div class="d-flex flex-wrap p-3 ">
         <h3 class="pr-3">Qualifications</h3>
 
-        <div style="display:inline-block;cursor:pointer;padding:5px;background:#eee;border-radius:5px;" onclick="showQualificationsModal()">Add</div>
+        <div style="height:30px;display:inline-block;cursor:pointer;padding:5px;background:#eee;border-radius:5px;" onclick="showQualificationsModal()">Add</div>
     </div>
 
     @foreach ($employee->qualified as $qualification)
@@ -59,7 +59,7 @@
             <h4>{{ $qualification->pivot->grade }}</h4>
         </div>
 
-        <span style="font-size:20px;cursor:pointer;position:absolute; top:10px;right:20px;"
+        <span style="font-size:20px;cursor:pointer;position:absolute; top:7px;right:20px;"
             onclick="deleteQualification()">
             <i class="fa fa-close" style="margin-bottom:15px;"></i>
         </span>
