@@ -26,7 +26,7 @@
             </div>
             <div>
                 <h3>
-                <a href="{{route('employees.show', $employee->id)}}">
+                <a href="{{route('employees.show', $employee->id)}}" style="color:#444;">
                         <strong>{{ $employee->first_name}} {{ $employee->last_name}}</strong>
                     </a>
                 </h3>
