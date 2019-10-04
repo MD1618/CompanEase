@@ -13,7 +13,19 @@ class Qualifications_pivot_TableSeeder extends Seeder
     {
         //
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '1',
+            'qualification_id' => '2',
+            'employee_id' => '1',
+            'aquired' => '2019-06-06',
+            'grade' => 'A'
+        ]);
+        DB::table('employee_qualification')->insert([
+            'qualification_id' => '3',
+            'employee_id' => '1',
+            'aquired' => '2019-06-06',
+            'grade' => 'A'
+        ]);
+        DB::table('employee_qualification')->insert([
+            'qualification_id' => '6',
             'employee_id' => '1',
             'aquired' => '2019-06-06',
             'grade' => 'A'
