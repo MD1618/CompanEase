@@ -168,7 +168,8 @@ class EmployeesController extends Controller
             
             DB::table('employee_qualification')->where([['employee_id', $data['user_id']], ['qualification_id', $data['qualification_id']]])->update($pivotData);
 
-            return "Added";
+            $qualifications = Qualification::all();
+            return view('employees.employeeShow', compact(['employee', 'qualifications']));
         } else {
 
 
