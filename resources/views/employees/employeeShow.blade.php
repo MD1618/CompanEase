@@ -42,22 +42,22 @@
 
 
     <div class="d-flex flex-wrap p-3 ">
-        <h3 class="pr-3">Qualifications</h3>
+        <h3 class="pr-3"><i class="fa fa-graduation-cap"></i> Qualifications</h3>
 
-        <div style="height:30px;display:inline-block;cursor:pointer;padding:5px;background:#eee;border-radius:5px;" onclick="showQualificationsModal()">Add</div>
+        <div style="height:30px;display:inline-block;cursor:pointer;padding:5px;background:#eee;border-radius:5px;"
+            onclick="showQualificationsModal()">Add</div>
     </div>
 
     @foreach ($employee->qualified as $qualification)
-    <div class="d-flex flex-wrap" style="position: relative;">
+    <div class=" flex-wrap listItem" style="position: relative;background:rgba(250,250,250,0.1);margin:0 10px;box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);">
         <div style="padding:10px;">
             <h4>{{ $qualification->title }}</h4>
         </div>
         <div style="padding:10px;">
-            <h4>{{ $qualification->pivot->aquired }}</h4>
+            <h5>{{ $qualification->pivot->aquired }}&emsp;Grade - {{ $qualification->pivot->grade }}</h5>
+            
         </div>
-        <div style="padding:10px;">
-            <h4>{{ $qualification->pivot->grade }}</h4>
-        </div>
+       
 
         <span style="font-size:20px;cursor:pointer;position:absolute; top:7px;right:20px;"
             onclick="deleteQualification()">
@@ -80,9 +80,8 @@
 
         <form action="{{ route('employees.qualify') }}" enctype="multipart/form-data" method="POST">
             @csrf
-            
-            <input id="user_id" name="user_id" type="text"
-            class="form-control" value="{{ $employee->id}}" hidden>
+
+            <input id="user_id" name="user_id" type="text" class="form-control" value="{{ $employee->id}}" hidden>
 
             <div class="form-group pt-5" style="width:90%;margin-left:5%;">
                 <label for="qualification_id" class="col-md-4 col-form-label ">{{ __('Qualification') }}</label>
