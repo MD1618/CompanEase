@@ -19,7 +19,7 @@
         </div>
         <h4 class="ml-3">Employees {{ $company->employees->count()}}</h4 class="ml-3">
     @foreach ($company->employees as $employee)
-    <div class="d-flex flex-wrap p-3 mb-3 listItem" style="background:none;border-radius:0px;margin: 0 30px;box-shadow:none;">
+    <div class="d-flex flex-wrap p-3 mb-3 listItem" style="background:rgba(250,250,250,0.1);margin:0 10px;box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);">
             <div
                 style="overflow:hidden;margin-right:20px;width:100px;height:100px;border:2px solid #555;border-radius:8px;">
                 <img src="{{ asset('storage') . '/'.$employee->profileImage()  }}" alt="" class="" style="width:100px;">
