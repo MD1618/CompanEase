@@ -7,16 +7,17 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
+
     <!-- Scripts -->
-    
+
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-   
+    <!-- page specific styles -->
+    @yield('pagespecificstyles')
 
 </head>
 
@@ -24,7 +25,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -40,7 +41,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto" >
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
@@ -49,8 +50,8 @@
 
                         @else
 
-                        <li class="nav-item dropdown" >
-                            <a id="navbarDropdown"  class="nav-link dropdown-toggle" href="#" role="button"
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Companies <i class="fa fa-angle-down"></i>
                             </a>
@@ -95,15 +96,20 @@
                             </div>
                         </li>
                         <li style="width:40px;">
-                            
+
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" style="color:#999;" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+                            <a id="navbarDropdown" style="color:#999;" class="nav-link dropdown-toggle" href="#"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <i class="fa fa-angle-down"></i>
                             </a>
 
+
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{route('home')}}">
+                                    Dashboard
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -125,6 +131,8 @@
             @yield('content')
         </main>
     </div>
+    <!-- page specific scripts -->
+@yield('pagespecificscripts')
 </body>
 
 </html>
