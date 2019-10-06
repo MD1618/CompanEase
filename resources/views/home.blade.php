@@ -3,18 +3,13 @@
 @section('pagespecificstyles')
 
 <style>
-	/* body {
-        width: 960px;
-        height: 500px;
-        position: relative;
-    } */
-
 	#piechart {
-		width: 1100px;
-		height:700px;
+		width: 1200px;
+		height: 700px;
 		position: absolute;
 		left: 50%;
-		transform: translateX(-50%);
+		top:20%;
+		transform: translateX(-50%) scale(1);
 	}
 
 	path.slice {
@@ -35,12 +30,18 @@
 @section('content')
 
 <div class="container">
-	<div class="d-flex justify-content-between col-8 offset-2">
+	<div class="d-flex flex-wrap justify-content-between col-8 offset-2 col-md-12 offset-md-0 col-sm-12 offset-sm-0 ">
 
-		<div style="padding:5px;border:1px solid #555;border-radius:5px;cursor:pointer;" onclick="changeData(1)">Companies - Employees</div>
-		<div style="padding:5px;border:1px solid #555;border-radius:5px;cursor:pointer;" onclick="changeData(2)">Employees - Qualificaitons</div>
-		<div style="padding:5px;border:1px solid #555;border-radius:5px;cursor:pointer;" onclick="changeData(3)">Qualifications - Employees</div>
-		
+		<div id="dataButton1"
+			style="user-select: none;padding:5px;border:1px solid #555;border-radius:5px;cursor:pointer;transition:1s;box-shadow:3px 5px 10px rgba(0,0,0,0.4);"
+			onclick="changeData(1)">Companies - Employees</div>
+		<div id="dataButton2"
+			style="user-select: none;padding:5px;border:1px solid #555;border-radius:5px;cursor:pointer;transition:1s;"
+			onclick="changeData(2)">Employees - Qualificaitons</div>
+		<div id="dataButton3"
+			style="user-select: none;padding:5px;border:1px solid #555;border-radius:5px;cursor:pointer;transition:1s;"
+			onclick="changeData(3)">Qualifications - Employees</div>
+
 	</div>
 </div>
 
@@ -59,9 +60,13 @@ svg.append("g")
 svg.append("g")
 	.attr("class", "lines");
 
-var width = 1100,
-    height = 600,
-	radius = Math.min(width, height) / 2;
+var width = 1200,
+height = 600,
+radius = Math.min(width, height) / 2;
+
+
+
+
 
 var pie = d3.layout.pie()
 	.sort(null)
@@ -86,8 +91,8 @@ var employeesCount = {!! json_encode($employeeCount, JSON_HEX_TAG) !!};
 var employees = {!! json_encode($employees, JSON_HEX_TAG) !!};
 var qualificationCount = {!! json_encode($qualificationCount, JSON_HEX_TAG) !!};
 var qualifications = {!! json_encode($qualifications, JSON_HEX_TAG) !!};
-var employeeCount = {!! json_encode($employeeCount, JSON_HEX_TAG) !!};
-console.log(employeeCount,qualifications);
+var employeeCount = {!! json_encode($employeeQualificationCount, JSON_HEX_TAG) !!};
+
 
 var color = d3.scale.ordinal()
 	
@@ -100,75 +105,67 @@ function companyData(){
 		data.push({'label':companies[i]['name'] + " - " +  employeesCount[i]['count'], 'value':employeesCount[i]['count']})
 		
 	}
-	//console.log(data);
 	return data;
-
 }
 
 function startData(){
 
-var data = [];
+	var data = [];
 	for (let i = 0; i < companies.length; i++) {
 		data.push({'label':companies[i]['name'] + " - " +  employeesCount[i]['count'], 'value':5})
 		
 	}
-//console.log(data);
-return data;
-
+	return data;
 }
 
 function qualificationData(){
 
-var data = [];
-for (let i = 0; i < employees.length; i++) {
-	data.push({'label':employees[i]['first_name'] + " " + employees[i]['last_name'] + " - " +  qualificationCount[i]['count'], 'value':qualificationCount[i]['count']})
-	
-}
-//console.log(data);
-return data;
-
+	var data = [];
+	for (let i = 0; i < employees.length; i++) {
+		data.push({'label':employees[i]['first_name'] + " " + employees[i]['last_name'] + " - " +  qualificationCount[i]['count'], 'value':qualificationCount[i]['count']})
+		
+	}
+	return data;
 }
 
 function startqualificationData(){
 
-var data = [];
-for (let i = 0; i < employees.length; i++) {
-	data.push({'label':employees[i]['first_name'] + " " + employees[i]['last_name']  + " - " +  qualificationCount[i]['count'], 'value':5})
-	
-}
-//console.log(data);
-return data;
-
+	var data = [];
+	for (let i = 0; i < employees.length; i++) {
+		data.push({'label':employees[i]['first_name'] + " " + employees[i]['last_name']  + " - " +  qualificationCount[i]['count'], 'value':5})
+		
+	}
+	return data;
 }
 
 
 function employeeData(){
 
-var data = [];
-for (let i = 0; i < qualifications.length; i++) {
-	data.push({'label':qualifications[i]['title'] + " - " +  employeeCount[i]['count'], 'value':employeeCount[i]['count']})
-	
-}
-//console.log(data);
-return data;
-
+	var data = [];
+	for (let i = 0; i < qualifications.length; i++) {
+		data.push({'label':qualifications[i]['title'] + " - " +  employeeCount[i]['count'], 'value':employeeCount[i]['count']})
+		
+	}
+	return data;
 }
 
 function startemployeeData(){
 
-var data = [];
-for (let i = 0; i < qualifications.length; i++) {
-	data.push({'label':qualifications[i]['title'] + " - " +  employeeCount[i]['count'], 'value':5})
-	
-}
-//console.log(data);
-return data;
-
+	var data = [];
+	for (let i = 0; i < qualifications.length; i++) {
+		data.push({'label':qualifications[i]['title'] + " - " +  employeeCount[i]['count'], 'value':5})
+		
+	}
+	return data;
 }
 
 function changeData(value){
 	if(value == 1){
     	change(startData());
+		
+		document.getElementById("dataButton1").style.boxShadow = "3px 5px 10px rgba(0,0,0,0.4)";
+		document.getElementById("dataButton2").style.boxShadow = "3px 5px 10px rgba(0,0,0,0)";
+		document.getElementById("dataButton3").style.boxShadow = "3px 5px 10px rgba(0,0,0,0)";
 
 		setTimeout(function(){
 			change(companyData());
@@ -176,12 +173,20 @@ function changeData(value){
 
 	} else if(value == 2){
 		change(startqualificationData());
+		
+		document.getElementById("dataButton2").style.boxShadow = "3px 5px 10px rgba(0,0,0,0.4)";
+		document.getElementById("dataButton1").style.boxShadow = "3px 5px 10px rgba(0,0,0,0)";
+		document.getElementById("dataButton3").style.boxShadow = "3px 5px 10px rgba(0,0,0,0)";
 
 		setTimeout(function(){
 			change(qualificationData());
 		}, 500)
 	} else if(value == 3){
 		change(startemployeeData());
+		
+		document.getElementById("dataButton3").style.boxShadow = "3px 5px 10px rgba(0,0,0,0.4)";
+		document.getElementById("dataButton2").style.boxShadow = "3px 5px 10px rgba(0,0,0,0)";
+		document.getElementById("dataButton1").style.boxShadow = "3px 5px 10px rgba(0,0,0,0)";
 
 		setTimeout(function(){
 			change(employeeData());
@@ -228,6 +233,7 @@ function change(data) {
 
 	text.enter()
 		.append("text")
+		.style("font-size", "18px")
 		.attr("dy", ".5em")
 		.text(function(d) {
 			return d.data.label;
