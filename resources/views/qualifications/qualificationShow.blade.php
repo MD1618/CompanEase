@@ -9,9 +9,9 @@
         <div>
             <h3><i class="fa fa-graduation-cap"></i><strong>    {{ $qualification->title}}</strong></h3>
         </div>
-
-
-
+        @if($qualification->id != 1)
+        <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="{{ route('qualifications.edit', $qualification->id) }}" style="color:#666;"><i class="fa fa-edit" ></i></a></div>
+        @endif
     </div>
     @foreach ($qualification->student as $student)
     <a href="{{ route('employees.show',$student->id)}}">
