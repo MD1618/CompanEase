@@ -14,7 +14,7 @@
             <h5><i class="fa fa-phone"></i> {{ $employee->phone}}</h5>
 
         </div>
-        <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="" style="color:#666;"><i
+    <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="{{ route('employees.edit', $employee->id) }}" style="color:#666;"><i
                     class="fa fa-edit"></i></a></div>
 
     </div>
