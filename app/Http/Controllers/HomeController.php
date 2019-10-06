@@ -53,15 +53,15 @@ class HomeController extends Controller
 
 
         $qualificationsC = Qualification::all();
-        $employeeCount = [];
+        $employeeQualificationCount = [];
         foreach ($qualificationsC as $qualification) {
            
-            array_push($employeeCount, (object) ['count'=> $qualification->student->count() ]);
+            array_push($employeeQualificationCount, (object) ['count'=> $qualification->student->count() ]);
            
         }
         //dd($employeeCount);
         $qualifications =  DB::table('qualifications')->select('title')->get();
 
-        return view('home',compact('companies','employeeCount','employees','qualificationCount','qualifications','employeeCount'));
+        return view('home',compact('companies','employeeCount','employees','qualificationCount','qualifications','employeeQualificationCount'));
     }
 }
