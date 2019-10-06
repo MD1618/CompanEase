@@ -14,7 +14,7 @@
                 <h5><a href="http://{{ $company->website}}">{{ $company->website}}</a></h5>
 
             </div>
-            <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="" style="color:#666;"><i class="fa fa-trash" ></i></a></div>
+        <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="{{ route('companies.edit', $company->id) }}" style="color:#666;"><i class="fa fa-edit" ></i></a></div>
             
         </div>
         <h4 class="ml-3">Employees {{ $company->employees->count()}}</h4 class="ml-3">
