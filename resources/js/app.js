@@ -33,30 +33,9 @@ const app = new Vue({
 });
 
 
-/**
- * 
- * qualifications modal 
- * 
- */
 
-window.showQualificationsModal = function() {
 
-    var qualificationModal = document.getElementById('qualificationModal');
-    if (qualificationModal.classList.contains('hideModal')) {
-        qualificationModal.classList.remove('hideModal');
-    } else {
-        qualificationModal.classList.add('hideModal');
-    }
-}
 
-window.deleteQualification = function() {
-    var deleteModal = document.getElementById('deleteModal');
-    if (deleteModal.classList.contains('hideModal')) {
-        deleteModal.classList.remove('hideModal');
-    } else {
-        deleteModal.classList.add('hideModal');
-    }
-}
 
 
 

@@ -74,3 +74,24 @@ body {
     min-height: 300px;
     box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.5);
 }
+
+@media only screen and (max-width: 1024px) {
+    #piechart {
+        transform: translateX(-50%) scale(0.8)!important;
+        top: 20%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #piechart {
+        transform: translateX(-50%) scale(0.5)!important;
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #piechart {
+        transform: translateX(-50%) scale(0.3) !important;
+        top: 10%;
+    }
+}
