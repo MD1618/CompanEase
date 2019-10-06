@@ -200,4 +200,10 @@ class EmployeesController extends Controller
         }
        
     }
+
+
+    public function unqualify($id,$qualification)
+    {
+        dd($id,$qualification);
+    }
 }

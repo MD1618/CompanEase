@@ -14,8 +14,9 @@
             <h5><i class="fa fa-phone"></i> {{ $employee->phone}}</h5>
 
         </div>
-    <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a href="{{ route('employees.edit', $employee->id) }}" style="color:#666;"><i
-                    class="fa fa-edit"></i></a></div>
+        <div style="position:absolute;top:10px;right:20px;font-size:20px;"><a
+                href="{{ route('employees.edit', $employee->id) }}" style="color:#666;"><i class="fa fa-edit"></i></a>
+        </div>
 
     </div>
 
@@ -49,19 +50,21 @@
     </div>
 
     @foreach ($employee->qualified as $qualification)
-    <div class=" flex-wrap listItem" style="position: relative;background:rgba(250,250,250,0.1);margin:0 10px;box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);">
+    <div class=" flex-wrap listItem"
+        style="position: relative;background:rgba(250,250,250,0.1);margin:0 10px;box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);">
         <div style="padding:10px;">
             <h4>{{ $qualification->title }}</h4>
         </div>
         <div style="padding:10px;">
             <h5>{{ $qualification->pivot->aquired }}&emsp;Grade - {{ $qualification->pivot->grade }}</h5>
-            
-        </div>
-       
 
-        <span style="font-size:20px;cursor:pointer;position:absolute; top:7px;right:20px;"
-            onclick="deleteQualification()">
-            <i class="fa fa-close" style="margin-bottom:15px;"></i>
+        </div>
+
+
+        <span style="font-size:20px;cursor:pointer;position:absolute; top:7px;right:20px;" >
+            <a href="{{ route('employees.unqualify', [$employee->id,$qualification->id]) }}">
+                <i class="fa fa-close" style="margin-bottom:15px;"></i>
+            </a>
         </span>
 
     </div>
@@ -130,21 +133,28 @@
     </div>
 </div>
 
-<div id="deleteModal" class="hideModal">
-    <div id="innerDeletemodal">
-        <div style="position:absolute; top:10px;right:20px; font-size:20px;" onclick="deleteQualification()">
-            <i class="fa fa-close"></i>
-        </div>
-        <div class="p-5">
-            <h5>Are you sure you want to remove this qualification?</h5>
-        </div>
 
-        <div class=" pt-4" style="display:inline-block;position:relative;left:50%;transform:translateX(-50%);">
-            <button class="btn btn-primary">Confirm Delete</button>
-        </div>
 
-    </div>
-</div>
 
+@endsection
+
+@section('pagespecificscripts')
+
+<script>
+  
+
+function showQualificationsModal(){
+    var qualificationModal = document.getElementById('qualificationModal');
+    if (qualificationModal.classList.contains('hideModal')) {
+        qualificationModal.classList.remove('hideModal');
+    } else {
+        qualificationModal.classList.add('hideModal');
+    }
+}
+
+
+
+
+</script>
 
 @endsection
