@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="{{ route('employees.store') }}" enctype="multipart/form-data" method="POST">
+<form action="{{ route('qualifications.store') }}" enctype="multipart/form-data" method="POST">
     @csrf
     <div class="row">
         <div
@@ -25,24 +25,7 @@
                 @enderror
             </div>
 
-         
-
-            <div class="form-group row">
-                <label for="degree" class="col-md-4 col-form-label ">{{ __('Degree Level') }}</label>
-
-                <select class="form-control" id="degree" name="degree" required>
-                    <option value="" selected disabled>Level</option>
-                    <option value="HNC">HNC</option>
-                    <option value="HND">HND</option>
-                    <option value="B.S">B.S</option>
-                    <option value="Ph.D">Ph.D</option>
-                    <option value="M.S">M.S</option>
                     
-
-                </select>
-            </div>
-
-                   
 
             <div class="row pt-4">
                 <button class="btn btn-primary">Add Qualification</button>
