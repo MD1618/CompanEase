@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Company;
+use App\Employee;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
+use App\Mail\NewCompanyWelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class CompaniesController extends Controller
 {
@@ -36,6 +39,8 @@ class CompaniesController extends Controller
     public function create()
     {
         //
+
+        
         return view('companies.createCompany');
     }
 
@@ -73,6 +78,10 @@ class CompaniesController extends Controller
 
         DB::table('companies')->insert($data);
 
+        $company = Company::where('name',$data['name'])->first();
+        
+        Mail::to($company->email)->send(new NewCompanyWelcomeMail());
+
         return redirect("/companies");
     }
 
@@ -98,6 +107,8 @@ class CompaniesController extends Controller
     public function edit($id)
     {
         //
+        $company = Company::findOrFail($id);
+        return view('companies.companyEdit',compact('company'));
     }
 
     /**
@@ -110,6 +121,16 @@ class CompaniesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'logo' => 'image',
+            'website' => 'url'
+        ]);
+        //dd($request);
+        $company = Company::findOrFail($id);
+        $company->update($data);
+        return view('companies.companyShow',compact('company'));
     }
 
     /**
@@ -121,5 +142,15 @@ class CompaniesController extends Controller
     public function destroy($id)
     {
         //
+        $company = Company::findOrFail($id);
+        $company->delete();
+
+
+        //set the companies employees to unemployed to stop things breaking
+        $employees = Employee::where('company_id',$id)->update(['company_id' => 1]);
+        
+        //dd($employees);
+        $companies = Company::where('name', '!=','Unemployed')->paginate(10);
+        return view('companies.companiesList', compact('companies'));
     }
 }
