@@ -75,6 +75,9 @@
                                 <a class="dropdown-item" href="{{route('employees')}}">
                                     Employees List
                                 </a>
+                                <a class="dropdown-item" href="{{route('companies.show',1)}}">
+                                        Unemployed
+                                    </a>
                                 <a class="dropdown-item" href="{{route('employees.create')}}">
                                     Add New Employee
                                 </a>
