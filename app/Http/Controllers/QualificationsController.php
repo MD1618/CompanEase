@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Qualification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class QualificationsController extends Controller
 {
@@ -39,6 +40,16 @@ class QualificationsController extends Controller
     public function store(Request $request)
     {
         //
+
+        $data = request()->validate([
+            'title' => ['required', 'string', 'max:255']
+        ]);
+
+        DB::table('qualifications')->insert($data);
+
+        return redirect()->action('QualificationsController@index');
+
+
     }
 
     /**
@@ -63,6 +74,8 @@ class QualificationsController extends Controller
     public function edit($id)
     {
         //
+        $qualification = Qualification::findOrfail($id);
+        return view('qualifications.qualificationEdit', compact('qualification'));
     }
 
     /**
@@ -75,6 +88,13 @@ class QualificationsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = request()->validate([
+            'title' => ['required', 'string', 'max:255']
+        ]);
+
+        DB::table('qualifications')->where('id',$id)->update($data);
+
+        return redirect()->action('QualificationsController@index');
     }
 
     /**
@@ -86,5 +106,8 @@ class QualificationsController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('qualifications')->where('id',$id)->delete();
+
+        return redirect()->action('QualificationsController@index');
     }
 }
