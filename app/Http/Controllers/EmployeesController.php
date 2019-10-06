@@ -204,6 +204,11 @@ class EmployeesController extends Controller
 
     public function unqualify($id,$qualification)
     {
-        dd($id,$qualification);
+        //dd($id,$qualification);
+        DB::table('employee_qualification')->where([['employee_id', $id], ['qualification_id', $qualification]])->delete();
+
+
+        return redirect()->action('EmployeesController@show',$id);
+        
     }
 }
