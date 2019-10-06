@@ -11,11 +11,14 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes(['register' => false]);
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -37,14 +40,20 @@ Route::get('/employees/create', 'EmployeesController@create')->name('employees.c
 Route::post('/employees/store', 'EmployeesController@store')->name('employees.store');
 Route::post('/employees/qualify', 'EmployeesController@qualify')->name('employees.qualify');
 
+Route::get('/employees/edit/{id}', 'EmployeesController@edit')->name('employees.edit');
+Route::patch('/employees/update/{id}', 'EmployeesController@update')->name('employees.update');
+
 Route::get('/employees/{id}', 'EmployeesController@show')->name('employees.show');
+
+Route::post('/employees/delete/{id}', 'EmployeesController@destroy')->name('employees.delete');
 
 //Qualifications
 Route::get('/qualifications', 'QualificationsController@index')->name('qualifications');
 
 Route::get('/qualifications/create', 'QualificationsController@create')->name('qualifications.create');
+Route::get('/qualifications/edit/{id}', 'QualificationsController@edit')->name('qualifications.edit');
 Route::post('/qualifications/store', 'QualificationsController@store')->name('qualifications.store');
-
-
+Route::patch('/qualifications/update/{id}', 'QualificationsController@update')->name('qualifications.update');
+Route::post('/qualifications/delete/{id}', 'QualificationsController@destroy')->name('qualifications.delete');
 
 Route::get('/qualifications/{id}', 'QualificationsController@show')->name('qualifications.show');
