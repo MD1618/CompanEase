@@ -33,7 +33,7 @@ class Qualifications_pivot_TableSeeder extends Seeder
         ]);
 
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '4',
             'employee_id' => '3',
             'aquired' => '2019-06-06',
             'grade' => 'A'
@@ -165,7 +165,7 @@ class Qualifications_pivot_TableSeeder extends Seeder
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '15',
             'employee_id' => '18',
             'aquired' => '2011-06-06',
             'grade' => 'A'
@@ -196,7 +196,7 @@ class Qualifications_pivot_TableSeeder extends Seeder
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '7',
             'employee_id' => '21',
             'aquired' => '2019-06-06',
             'grade' => 'A'
@@ -208,13 +208,13 @@ class Qualifications_pivot_TableSeeder extends Seeder
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '11',
             'employee_id' => '23',
             'aquired' => '2019-06-06',
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '12',
             'employee_id' => '24',
             'aquired' => '2019-06-06',
             'grade' => 'A'
@@ -232,25 +232,25 @@ class Qualifications_pivot_TableSeeder extends Seeder
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '14',
             'employee_id' => '27',
             'aquired' => '2019-06-06',
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '1',
             'employee_id' => '28',
             'aquired' => '2019-06-06',
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '1',
             'employee_id' => '29',
             'aquired' => '2019-06-06',
             'grade' => 'A'
         ]);
         DB::table('employee_qualification')->insert([
-            'qualification_id' => '6',
+            'qualification_id' => '16',
             'employee_id' => '30',
             'aquired' => '2019-06-06',
             'grade' => 'A'
