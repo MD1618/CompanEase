@@ -108,7 +108,9 @@ class EmployeesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companies = Company::all();
+        $employee = Employee::findOrFail($id);
+        return view('employees.employeeEdit',compact('employee','companies'));
     }
 
     /**
@@ -121,6 +123,23 @@ class EmployeesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = request()->validate([
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'company_id' => ['required'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'phone' => 'string',
+            'image' => 'image',
+        ]);
+            //dd($data);
+        //dd($request);
+        $employee = Employee::findOrFail($id);
+        $employee->update($data);
+        DB::table('employees')->where('id',$id)->update(['company_id' => $data['company_id']]);
+        //dd($employee);
+        $employee = Employee::findOrFail($id);
+        $qualifications = Qualification::all();
+        return view('employees.employeeShow', compact(['employee', 'qualifications']));
     }
 
     /**
@@ -132,6 +151,10 @@ class EmployeesController extends Controller
     public function destroy($id)
     {
         //
+        DB::table('employees')->where('id',$id)->delete();
+
+        return redirect()->action('EmployeesController@index');
+
     }
 
     /**
