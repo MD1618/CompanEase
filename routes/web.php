@@ -39,6 +39,7 @@ Route::get('/employees', 'EmployeesController@index')->name('employees');
 Route::get('/employees/create', 'EmployeesController@create')->name('employees.create');
 Route::post('/employees/store', 'EmployeesController@store')->name('employees.store');
 Route::post('/employees/qualify', 'EmployeesController@qualify')->name('employees.qualify');
+Route::get('/employees/unqualify/{id}{qualification}', 'EmployeesController@unqualify')->name('employees.unqualify');
 
 Route::get('/employees/edit/{id}', 'EmployeesController@edit')->name('employees.edit');
 Route::patch('/employees/update/{id}', 'EmployeesController@update')->name('employees.update');
