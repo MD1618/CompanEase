@@ -12,10 +12,11 @@
             <div class="p-3"> 
                
                 <h3 style="color:#444;"><strong>{{ $employee->first_name}} {{ $employee->last_name}}</strong></h3>
+                @if($employee->company)
                 <h5><i class="fa fa-building"></i>
                     <a href="{{ route('companies.show',$employee->company->id)}}"> {{ $employee->company->name}}</a>
                 </h5>
-              
+                @endif
             </div>
         </div>
     </a>
